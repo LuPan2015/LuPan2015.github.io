@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Python FSMstatemachine.py123456789101112131415161718192021222324252627282930class StateMachine:    def __init__(self):        self.handlers = &amp;#123;&amp;#125;        self.startState = None        self.end">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2016/09/20/FSM/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Python FSMstatemachine.py123456789101112131415161718192021222324252627282930class StateMachine:    def __init__(self):        self.handlers = &amp;#123;&amp;#125;        self.startState = None        self.end">
+<meta property="og:updated_time" content="2016-09-20T13:26:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Python FSMstatemachine.py123456789101112131415161718192021222324252627282930class StateMachine:    def __init__(self):        self.handlers = &amp;#123;&amp;#125;        self.startState = None        self.end">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-FSM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/20/FSM/" class="article-date">
+  <time datetime="2016-09-20T13:20:13.000Z" itemprop="datePublished">2016-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python-FSM"><a href="#Python-FSM" class="headerlink" title="Python FSM"></a>Python FSM</h2><p>statemachine.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StateMachine</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.handlers = &#123;&#125;</div><div class="line">        self.startState = <span class="keyword">None</span></div><div class="line">        self.endStates = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_state</span><span class="params">(self, name, handler, end_state=<span class="number">0</span>)</span>:</span></div><div class="line">        name = name.upper()</div><div class="line">        self.handlers[name] = handler</div><div class="line">        <span class="keyword">if</span> end_state:</div><div class="line">            self.endStates.append(name)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_start</span><span class="params">(self, name)</span>:</span></div><div class="line">        self.startState = name.upper()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self, cargo)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            handler = self.handlers[self.startState]</div><div class="line">        <span class="keyword">except</span>:</div><div class="line">            <span class="keyword">raise</span> InitializationError(<span class="string">"must call .set_start() before .run()"</span>)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.endStates:</div><div class="line">            <span class="keyword">raise</span>  InitializationError(<span class="string">"at least one state must be an end_state"</span>)</div><div class="line"></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            (newState, cargo) = handler(cargo)</div><div class="line">            <span class="keyword">if</span> newState.upper() <span class="keyword">in</span> self.endStates:</div><div class="line">                print(<span class="string">"reached "</span>, newState)</div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                handler = self.handlers[newState.upper()]</div></pre></td></tr></table></figure></p>
+<p>测试demo如下.<br>statemachine_test.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> statemachine <span class="keyword">import</span> StateMachine</div><div class="line"></div><div class="line">positive_adjectives = [<span class="string">"great"</span>,<span class="string">"super"</span>, <span class="string">"fun"</span>, <span class="string">"entertaining"</span>, <span class="string">"easy"</span>]</div><div class="line">negative_adjectives = [<span class="string">"boring"</span>, <span class="string">"difficult"</span>, <span class="string">"ugly"</span>, <span class="string">"bad"</span>]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_transitions</span><span class="params">(txt)</span>:</span></div><div class="line">    splitted_txt = txt.split(<span class="keyword">None</span>,<span class="number">1</span>)</div><div class="line">    word, txt = splitted_txt <span class="keyword">if</span> len(splitted_txt) &gt; <span class="number">1</span> <span class="keyword">else</span> (txt,<span class="string">""</span>)</div><div class="line">    <span class="keyword">if</span> word == <span class="string">"Python"</span>:</div><div class="line">        newState = <span class="string">"Python_state"</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        newState = <span class="string">"error_state"</span></div><div class="line">    <span class="keyword">return</span> (newState, txt)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">python_state_transitions</span><span class="params">(txt)</span>:</span></div><div class="line">    splitted_txt = txt.split(<span class="keyword">None</span>,<span class="number">1</span>)</div><div class="line">    word, txt = splitted_txt <span class="keyword">if</span> len(splitted_txt) &gt; <span class="number">1</span> <span class="keyword">else</span> (txt,<span class="string">""</span>)</div><div class="line">    <span class="keyword">if</span> word == <span class="string">"is"</span>:</div><div class="line">        newState = <span class="string">"is_state"</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        newState = <span class="string">"error_state"</span></div><div class="line">    <span class="keyword">return</span> (newState, txt)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_state_transitions</span><span class="params">(txt)</span>:</span></div><div class="line">    splitted_txt = txt.split(<span class="keyword">None</span>,<span class="number">1</span>)</div><div class="line">    word, txt = splitted_txt <span class="keyword">if</span> len(splitted_txt) &gt; <span class="number">1</span> <span class="keyword">else</span> (txt,<span class="string">""</span>)</div><div class="line">    <span class="keyword">if</span> word == <span class="string">"not"</span>:</div><div class="line">        newState = <span class="string">"not_state"</span></div><div class="line">    <span class="keyword">elif</span> word <span class="keyword">in</span> positive_adjectives:</div><div class="line">        newState = <span class="string">"pos_state"</span></div><div class="line">    <span class="keyword">elif</span> word <span class="keyword">in</span> negative_adjectives:</div><div class="line">        newState = <span class="string">"neg_state"</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        newState = <span class="string">"error_state"</span></div><div class="line">    <span class="keyword">return</span> (newState, txt)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_state_transitions</span><span class="params">(txt)</span>:</span></div><div class="line">    splitted_txt = txt.split(<span class="keyword">None</span>,<span class="number">1</span>)</div><div class="line">    word, txt = splitted_txt <span class="keyword">if</span> len(splitted_txt) &gt; <span class="number">1</span> <span class="keyword">else</span> (txt,<span class="string">""</span>)</div><div class="line">    <span class="keyword">if</span> word <span class="keyword">in</span> positive_adjectives:</div><div class="line">        newState = <span class="string">"neg_state"</span></div><div class="line">    <span class="keyword">elif</span> word <span class="keyword">in</span> negative_adjectives:</div><div class="line">        newState = <span class="string">"pos_state"</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        newState = <span class="string">"error_state"</span></div><div class="line">    <span class="keyword">return</span> (newState, txt)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">neg_state</span><span class="params">(txt)</span>:</span></div><div class="line">    print(<span class="string">"Hallo"</span>)</div><div class="line">    <span class="keyword">return</span> (<span class="string">"neg_state"</span>, <span class="string">""</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__== <span class="string">"__main__"</span>:</div><div class="line">    m = StateMachine()</div><div class="line">    m.add_state(<span class="string">"Start"</span>, start_transitions)</div><div class="line">    m.add_state(<span class="string">"Python_state"</span>,python_state_transitions)</div><div class="line">    m.add_state(<span class="string">"is_state"</span>, is_state_transitions)</div><div class="line">    m.add_state(<span class="string">"not_state"</span>, not_state_transitions)</div><div class="line">    m.add_state(<span class="string">"neg_state"</span>, <span class="keyword">None</span>, end_state=<span class="number">1</span>)</div><div class="line">    m.add_state(<span class="string">"pos_state"</span>, <span class="keyword">None</span>, end_state=<span class="number">1</span>)</div><div class="line">    m.add_state(<span class="string">"error_state"</span>, <span class="keyword">None</span>, end_state=<span class="number">1</span>)</div><div class="line">    m.set_start(<span class="string">"Start"</span>)</div><div class="line">    m.run(<span class="string">"Python is great"</span>)</div><div class="line">    m.run(<span class="string">"Python is difficult"</span>)</div><div class="line">    m.run(<span class="string">"Perl is ugly"</span>)</div></pre></td></tr></table></figure></p>
+<p>运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python statemachine_test.py</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/20/FSM/" data-id="citbio99v0001z1n9869v3uhz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/31/NFS-Gateway/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/20/FSM/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/31/NFS-Gateway/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/15/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
